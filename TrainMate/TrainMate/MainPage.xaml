@@ -20,12 +20,66 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Doot Doot" />
 
+            <Border     
+                StrokeShape="RoundRectangle 12">
+                <Entry x:Name="emailEntry"
+                   BackgroundColor="White"
+                   Placeholder="email@domain.com"
+                   TextColor="Black"
+                   PlaceholderColor="#828282" />
+            </Border>
+
+
+            <Border     
+                StrokeShape="RoundRectangle 12">
+                <Entry x:Name="passwordEntry"
+                   BackgroundColor="White"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   TextColor="Black"
+                   PlaceholderColor="#828282" />
+            </Border>
+
             <Button
                 x:Name="LoginBtn"
                 Text="Sign in" 
                 Style="{StaticResource LoginButton}"
-                SemanticProperties.Hint="Counts the number of times you click"
+                SemanticProperties.Hint="Logs the user in"
                 HorizontalOptions="Fill" />
+
+            <Grid
+                ColumnDefinitions="*,Auto,*"
+                VerticalOptions="Center"
+                Margin="0,10">
+
+                <BoxView
+                     HeightRequest="1"
+                     BackgroundColor="White"
+                     VerticalOptions="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    Text="Don't have an account yet? Register below!"
+                    TextColor="White"
+                    FontSize="14"
+                    Padding="10,0"
+                    HorizontalTextAlignment="Center" />
+
+                <BoxView
+                  Grid.Column="2"
+                  HeightRequest="1"
+                  BackgroundColor="White"
+                  VerticalOptions="Center" />
+            </Grid>
+
+            <Button
+                x:Name="RegisterBtn"
+                Text="Register" 
+                Style="{StaticResource RegisterButton}"
+                SemanticProperties.Hint="Registers the user"
+                HorizontalOptions="Fill" />
+
+
         </VerticalStackLayout>
     </ScrollView>
 

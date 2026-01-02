@@ -16,6 +16,11 @@ namespace TrainMate
             await Navigation.PushAsync(new HomePage());
         }
 
+        public async void OnRegisterClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());        
+        }
+
     }
 
 }

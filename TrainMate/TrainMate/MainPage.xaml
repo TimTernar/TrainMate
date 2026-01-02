@@ -78,7 +78,8 @@
                 Text="Register" 
                 Style="{StaticResource RegisterButton}"
                 SemanticProperties.Hint="Registers the user"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill"
+                Clicked="OnRegisterClicked"/>
 
 
         </VerticalStackLayout>

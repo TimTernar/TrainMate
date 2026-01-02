@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainMate.RegisterPage"
+             Title="RegisterPage">
+    <VerticalStackLayout
+         Padding="30,0"
+         Spacing="25"
+        >
+        <Label
+                Margin="30"
+                Text="TrainMate"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+        <Label
+                Margin="30"
+                Text="Create an account"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2" />
+
+        <Label
+                Margin="10"
+                Text="Enter your email to sign up for this app"
+                Style="{StaticResource HelperText}"
+                SemanticProperties.HeadingLevel="Level3" />
+
+
+        <Border     
+                StrokeShape="RoundRectangle 12">
+            <Entry x:Name="emailEntry"
+                   BackgroundColor="White"
+                   Placeholder="email@domain.com"
+                   TextColor="Black"
+                   PlaceholderColor="#828282" />
+        </Border>
+
+        <Button
+                x:Name="RegisterBtn"
+                Text="Continue" 
+                Style="{StaticResource LoginButton}"
+                SemanticProperties.Hint="Napoti uporabnika dalje na anketo"
+                HorizontalOptions="Fill"
+                Clicked="OnContinueClicked"/>
+
+        <Grid
+                ColumnDefinitions="*,Auto,*"
+                VerticalOptions="Center"
+                Margin="0,10">
+
+            <BoxView
+                     HeightRequest="1"
+                     BackgroundColor="White"
+                     VerticalOptions="Center" />
+
+            <Label
+                    Grid.Column="1"
+                    Text="or"
+                    TextColor="White"
+                    FontSize="14"
+                    Padding="10,0"
+                    HorizontalTextAlignment="Center" />
+
+            <BoxView
+                  Grid.Column="2"
+                  HeightRequest="1"
+                  BackgroundColor="White"
+                  VerticalOptions="Center" />
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

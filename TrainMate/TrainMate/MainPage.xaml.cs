@@ -1,12 +1,19 @@
-﻿namespace TrainMate
+﻿using Microsoft.Maui.ApplicationModel.Communication;
+using Microsoft.Maui.Controls;
+
+
+namespace TrainMate
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        public async void OnLoginClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
 
     }

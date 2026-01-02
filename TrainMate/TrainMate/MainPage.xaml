@@ -45,7 +45,8 @@
                 Text="Sign in" 
                 Style="{StaticResource LoginButton}"
                 SemanticProperties.Hint="Logs the user in"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill"
+                Clicked="OnLoginClicked"/>
 
             <Grid
                 ColumnDefinitions="*,Auto,*"

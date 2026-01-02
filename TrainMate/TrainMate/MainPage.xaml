@@ -48,6 +48,8 @@
                 HorizontalOptions="Fill"
                 Clicked="OnLoginClicked"/>
 
+            <!--prosim ne se dotikat :)-->
+            <!-- Don't have an account yet? Register below -->
             <Grid
                 ColumnDefinitions="*,Auto,*"
                 VerticalOptions="Center"

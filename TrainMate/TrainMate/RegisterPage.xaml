@@ -43,6 +43,8 @@
                 HorizontalOptions="Fill"
                 Clicked="OnContinueClicked"/>
 
+        <!-- or -->
+        <!-- deli stran na dve strani za voljši pogled-->
         <Grid
                 ColumnDefinitions="*,Auto,*"
                 VerticalOptions="Center"

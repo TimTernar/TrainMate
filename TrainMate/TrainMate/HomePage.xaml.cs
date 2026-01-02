@@ -9,7 +9,7 @@ public partial class HomePage : ContentPage
 
     private async void OnSavedWorkoutsTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//saved-workouts");
+        await Navigation.PushAsync(new TelovadbePage());
     }
 
 }

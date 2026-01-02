@@ -3,10 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainMate.AnketaPage1"
              Title="AnketaPage1">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="24">
+
+            <!-- Naslov -->
+            <Label
+                Text="Tell us about yourself"
+                Style="{StaticResource Headline}"
+                HorizontalOptions="Center" />
+
+            <Label Text="Your main goal" FontAttributes="Bold" />
+            <RadioButton GroupName="goal" Content="Lose weight" />
+            <RadioButton GroupName="goal" Content="Build muscle" />
+            <RadioButton GroupName="goal" Content="Improve endurance" />
+            <RadioButton GroupName="goal" Content="General fitness" />
+
+            <Label Text="Experience level" FontAttributes="Bold" />
+            <RadioButton GroupName="experience" Content="Beginner" />
+            <RadioButton GroupName="experience" Content="Intermediate" />
+            <RadioButton GroupName="experience" Content="Advanced" />
+
+            <Label Text="Training frequency" FontAttributes="Bold" />
+            <RadioButton GroupName="frequency" Content="1–2 times per week" />
+            <RadioButton GroupName="frequency" Content="3–4 times per week" />
+            <RadioButton GroupName="frequency" Content="5+ times per week" />
+
+            <Label Text="Where do you train?" FontAttributes="Bold" />
+            <RadioButton GroupName="equipment" Content="Gym" />
+            <RadioButton GroupName="equipment" Content="Home" />
+            <RadioButton GroupName="equipment" Content="Both" />
+
+            <!-- naprej -->
+            <Button
+                Text="Continue"
+                Style="{StaticResource LoginButton}"
+                Clicked="OnContinueClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

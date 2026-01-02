@@ -6,4 +6,10 @@ public partial class HomePage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void OnSavedWorkoutsTapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//saved-workouts");
+    }
+
 }

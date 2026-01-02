@@ -4,9 +4,25 @@
              x:Class="TrainMate.HomePage"
              Title="HomePage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Border StrokeShape="RoundRectangle16"
+                HeightRequest="160"
+                Margin="10"
+                Padding="0">
+
+            <!-- Omogoča da lahko kliknemo na sliko -->
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnSavedWorkoutsTapped" />
+            </Border.GestureRecognizers>
+
+            <Grid>
+                <Image
+                    Source="telovadba_a.jpg"
+                    Aspect="AspectFill" />
+
+                <Label
+                Text="Saved&#10;workouts"
+                Style="{StaticResource TextOverImage}" />
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

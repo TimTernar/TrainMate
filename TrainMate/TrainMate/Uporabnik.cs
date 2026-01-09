@@ -53,7 +53,7 @@ namespace TrainMate
 
         public TrainingFrequency frequency { get; set; }
 
-        //pusti tale prazni konstruktor pri miru prosim, hvala
+        //za vsak slučaj
         public Uporabnik() { }
 
         public Uporabnik(int id, string email, Goal goal, Expirience expirience, Access access, TrainingFrequency frequency)

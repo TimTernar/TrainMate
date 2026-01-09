@@ -29,6 +29,8 @@
             <RadioButton GroupName="frequency" Content="3–4 times per week" />
             <RadioButton GroupName="frequency" Content="5+ times per week" />
 
+            <!--Slava ukraini-->
+            <!--Herojem slava-->
             <Label Text="Where do you train?" FontAttributes="Bold" />
             <RadioButton GroupName="equipment" Content="Gym" />
             <RadioButton GroupName="equipment" Content="Home" />

@@ -25,7 +25,6 @@
                 Style="{StaticResource HelperText}"
                 SemanticProperties.HeadingLevel="Level3" />
 
-
         <Border     
                 StrokeShape="RoundRectangle 12">
             <Entry x:Name="emailEntry"
@@ -33,6 +32,21 @@
                    Placeholder="email@domain.com"
                    TextColor="Black"
                    PlaceholderColor="#828282" />
+        </Border>
+        
+        <Label
+                Margin="10"
+                Text="Enter a password"
+                Style="{StaticResource HelperText}"
+                SemanticProperties.HeadingLevel="Level3" />
+
+        <Border     
+                StrokeShape="RoundRectangle 12">
+            <Entry x:Name="passwordEntry"
+                   BackgroundColor="White"
+                   IsPassword="True"
+                   TextColor="Black"
+                    />
         </Border>
 
         <Button
@@ -69,6 +83,11 @@
                   BackgroundColor="White"
                   VerticalOptions="Center" />
         </Grid>
+
+        <Label
+                Margin="30"
+                Text="By clicking continue, you agree to our Terms of Service and Privacy Policy"
+                SemanticProperties.HeadingLevel="Level2" />
 
     </VerticalStackLayout>
 </ContentPage>

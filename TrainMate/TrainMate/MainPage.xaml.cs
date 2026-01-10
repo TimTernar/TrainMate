@@ -55,6 +55,11 @@ namespace TrainMate
             }
         }
 
+        /*
+         ker je google sign in malo volj kompliciran kot sem mislil, bomo se tega lotili
+        kasneje, in zanekrat gremo naprej samo z navadnim vpisom z mailom
+         */
+        #region googleSignUp
         public async void OnGoogleClicked(object sender, EventArgs e)
         {
             try
@@ -69,6 +74,7 @@ namespace TrainMate
                     }
                 };
                 //ni dokončano
+                
                 var client = new FirebaseAuthClient(config);
             }
 
@@ -78,7 +84,7 @@ namespace TrainMate
             }
 
         }
-
+        #endregion
         public async void OnRegisterClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());        

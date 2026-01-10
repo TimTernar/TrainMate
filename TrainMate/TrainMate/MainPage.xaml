@@ -83,6 +83,13 @@
                 HorizontalOptions="Fill"
                 Clicked="OnRegisterClicked"/>
 
+            <Button
+                x:Name="LoginGoogleButton"
+                Text="Continue with Google"
+                Style="{StaticResource LoginGoogleButton}"
+                SemanticProperties.Hint="Registers with google"
+                HorizontalOptions="Fill"
+                Clicked="OnGoogleClicked" />
 
         </VerticalStackLayout>
     </ScrollView>

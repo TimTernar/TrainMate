@@ -419,6 +419,12 @@
         <Setter Property="TextColor" Value="White" />
     </Style>
 
+    <!--Prijava z google računom-->
+    <Style TargetType="Button" x:Key="LoginGoogleButton">
+        <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        <Setter Property="TextColor" Value="Black" />
+    </Style>
+
     <!--Uporabljeno kjer imamo kaki text ki je preko slike npr. Saved workout na domači strnai-->
     <Style TargetType="Button" x:Key="TextOverImage">
         <Setter Property="TextColor" Value="White" />

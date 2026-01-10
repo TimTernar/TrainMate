@@ -55,6 +55,30 @@ namespace TrainMate
             }
         }
 
+        public async void OnGoogleClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var config = new Firebase.Auth.FirebaseAuthConfig
+                {
+                    ApiKey = webApiKey,
+                    AuthDomain = "mobilne-45354.firebaseapp.com",
+                    Providers = new FirebaseAuthProvider[]
+                    {
+                            new EmailProvider()
+                    }
+                };
+                //ni dokončano
+                var client = new FirebaseAuthClient(config);
+            }
+
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok");
+            }
+
+        }
+
         public async void OnRegisterClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());        

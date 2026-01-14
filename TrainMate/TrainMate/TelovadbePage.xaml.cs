@@ -7,5 +7,20 @@ public partial class TelovadbePage : ContentPage
 		InitializeComponent();
 	}
 
+    private int _counter = 2;
+
+	private void AddWorkout(object sender, EventArgs e)
+	{
+		WorkoutSelection.Add(new TextCell
+		{
+			Text = $"{_counter}. New workout",
+             Detail = "Dynamically added row"
+
+        });
+
+        _counter++;
+
+
+    }
 
 }

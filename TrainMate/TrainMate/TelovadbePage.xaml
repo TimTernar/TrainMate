@@ -13,13 +13,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout>
-                        <Label Text="{Binding}"
-                               FontSize="18"
-                               Padding="12" />
                         <BoxView HeightRequest="1"
                                  Color="Gray"
                                  HorizontalOptions="FillAndExpand"
                                  Margin="12,0,12,0" />
+
+                        <Label Text="Normal Day"
+                               FontSize="18"
+                               Padding="12" />
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -443,7 +443,7 @@
     <Style TargetType="Label" x:Key="WorkoutName">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="White" />
     </Style>
 
     <!--Ime za workout-->

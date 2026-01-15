@@ -1,7 +1,11 @@
+using Newtonsoft.Json;
+
 namespace TrainMate;
 
 public partial class TelovadbePage : ContentPage
 {
+    private List<dynamic> _workouts = new();
+
     public TelovadbePage()
     {
         InitializeComponent();
@@ -21,40 +25,36 @@ public partial class TelovadbePage : ContentPage
 
         var response = await httpClient.GetStringAsync(url);
 
-        var names = new List<string>();
+        _workouts.Clear();
 
         if (response.TrimStart().StartsWith("["))
         {
-            var workouts = Newtonsoft.Json.JsonConvert.DeserializeObject<List<dynamic>>(response);
-            foreach (var w in workouts)
-                names.Add((string)w.Name);
+            var list = JsonConvert.DeserializeObject<List<dynamic>>(response);
+            _workouts.AddRange(list);
         }
         else
         {
-            var workouts = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(response);
-            foreach (var w in workouts.Values)
-                names.Add((string)w.Name);
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(response);
+            _workouts.AddRange(dict.Values);
         }
 
-        WorkoutList.ItemsSource = names;
+        // IMPORTANT: bind FULL workouts, not names
+        WorkoutList.ItemsSource = _workouts;
+    }
+
+    private async void WorkoutList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count > 0)
+        {
+            var workout = e.CurrentSelection[0]; // FULL WORKOUT OBJECT
+            await Navigation.PushAsync(new ViewTelovadba(workout));
+        }
+
+        ((CollectionView)sender).SelectedItem = null;
     }
 
     private async void AddWorkout(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CreateTelovadba());
-    }
-
-    private async void WorkoutList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
-        {
-            var name = e.CurrentSelection[0] as string;
-            if (!string.IsNullOrEmpty(name))
-            {
-                await Navigation.PushAsync(new CreateTelovadba());
-
-            }
-        }
-        ((CollectionView)sender).SelectedItem = null;
     }
 }

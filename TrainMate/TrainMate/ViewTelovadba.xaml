@@ -14,7 +14,8 @@
                         <VerticalStackLayout Spacing="10">
                             <!--Prikaz imena telovadbe-->
                             <Label Text="{Binding Name}" 
-                                   Style="{StaticResource WorkoutName}"/>
+                                   TextColor="White"
+                                   />
                             <CollectionView ItemsSource="{Binding Exercises}" >
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
@@ -31,7 +32,7 @@
                                                 <Label Text="Reps" Grid.Column="3" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"/>
                                             </Grid>
 
-                                            <CollectionView ItemsSource="{Binding Value.Sets.Values}">
+                                            <CollectionView ItemsSource="{Binding Value.Sets}">
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid ColumnDefinitions="40,*,70,70,40"

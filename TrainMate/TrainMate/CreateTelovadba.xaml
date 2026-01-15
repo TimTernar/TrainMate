@@ -5,12 +5,8 @@
              Title="CreateTelovadba">
     <VerticalStackLayout>
         <Label 
-            Text="Create workout"
-            Style="{StaticResource Headline}"
+            Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
-        
-        
     </VerticalStackLayout>
 </ContentPage>

@@ -4,7 +4,7 @@ namespace TrainMate;
 
 public partial class TelovadbePage : ContentPage
 {
-    private List<dynamic> _workouts = new();
+    private List<Workout> _workouts = new();
 
     public TelovadbePage()
     {
@@ -27,18 +27,37 @@ public partial class TelovadbePage : ContentPage
 
         _workouts.Clear();
 
-        if (response.TrimStart().StartsWith("["))
+        if (string.IsNullOrWhiteSpace(response) || response == "null")
         {
-            var list = JsonConvert.DeserializeObject<List<dynamic>>(response);
-            _workouts.AddRange(list);
-        }
-        else
-        {
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(response);
-            _workouts.AddRange(dict.Values);
+            WorkoutList.ItemsSource = null;
+            return;
         }
 
-        // IMPORTANT: bind FULL workouts, not names
+        // If Firebase returns an array: [ {..}, {..} ]
+        if (response.TrimStart().StartsWith("["))
+        {
+            var list = JsonConvert.DeserializeObject<List<Workout>>(response);
+            if (list != null)
+                _workouts.AddRange(list);
+        }
+        // If Firebase returns an object: { "id1": {..}, "id2": {..} }
+        else
+        {
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, Workout>>(response);
+            if (dict != null)
+            {
+                foreach (var kvp in dict)
+                {
+                    kvp.Value.Id = kvp.Key; // store firebase key as Id
+                    _workouts.Add(kvp.Value);
+                }
+            }
+        }
+
+        // OPTIONAL: if you REALLY want ONLY 0 and 1:
+        // WorkoutList.ItemsSource = _workouts.Take(2).ToList();
+
+        // Normal: show all
         WorkoutList.ItemsSource = _workouts;
     }
 
@@ -46,7 +65,7 @@ public partial class TelovadbePage : ContentPage
     {
         if (e.CurrentSelection.Count > 0)
         {
-            var workout = e.CurrentSelection[0]; // FULL WORKOUT OBJECT
+            var workout = (Workout)e.CurrentSelection[0];
             await Navigation.PushAsync(new ViewTelovadba(workout));
         }
 

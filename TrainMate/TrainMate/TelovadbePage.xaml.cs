@@ -43,4 +43,19 @@ public partial class TelovadbePage : ContentPage
     {
         await Navigation.PushAsync(new CreateTelovadba());
     }
+
+    private async void WorkoutList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+        {
+            var name = e.CurrentSelection[0] as string;
+            if (!string.IsNullOrEmpty(name))
+            {
+                await DisplayAlert("Workout tapped", name, "OK");
+
+                // await Launcher.Default.OpenAsync(new Uri("https://example.com"));
+            }
+        }
+        ((CollectionView)sender).SelectedItem = null;
+    }
 }

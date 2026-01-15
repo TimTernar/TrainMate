@@ -8,7 +8,7 @@
 
             builder
                 .UseSharedMauiApp();
-
+            //to je moj backup
             return builder.Build();
         }
     }

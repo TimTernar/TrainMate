@@ -51,9 +51,8 @@ public partial class TelovadbePage : ContentPage
             var name = e.CurrentSelection[0] as string;
             if (!string.IsNullOrEmpty(name))
             {
-                await DisplayAlert("Workout tapped", name, "OK");
+                await Navigation.PushAsync(new CreateTelovadba());
 
-                // await Launcher.Default.OpenAsync(new Uri("https://example.com"));
             }
         }
         ((CollectionView)sender).SelectedItem = null;

@@ -437,10 +437,15 @@
     <Style TargetType="Border" x:Key="WorkoutTableShowcase">
         <Setter Property="BackgroundColor" Value="PaleVioletRed"/>
         <Setter Property="Padding" Value="10" />
-        <Setter Property="StrokeShape">
-        </Setter>
     </Style>
 
+    <!--Ime za workout (ViewTelovadba, NewWorkout)-->
+    <Style TargetType="Label" x:Key="WorkoutName">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+    
     <!--Still za add workout button na strani "Saved Workouts (TelovadbaPage)"-->
     <Style TargetType="Button" x:Key="AddWorkoutButton">
         <Setter Property="BackgroundColor" Value="AntiqueWhite"/>

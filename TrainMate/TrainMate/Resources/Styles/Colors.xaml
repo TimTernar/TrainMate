@@ -30,6 +30,13 @@
     
     <!--Barva za ozadje,-->
     <Color x:Key="RedBackground">#D88C8C</Color>
+    
+    <!--Barve za workout Box-->
+    <Color x:Key="BgDark">#1E1E1E</Color>
+    <Color x:Key="BgCard">#2A2A2A</Color>
+    <Color x:Key="Purple">#8B7CFF</Color>
+    <Color x:Key="GrayText">#9A9A9A</Color>
+
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

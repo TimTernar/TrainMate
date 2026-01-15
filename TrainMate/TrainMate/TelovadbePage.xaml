@@ -3,44 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainMate.TelovadbePage"
              Title="TelovadbePage">
+
     <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Workouts}">
+
+        <CollectionView x:Name="WorkoutList"
+                        VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10" Margin="0,5">
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="{Binding Name}"
-                                   FontSize="20"
-                                   FontAttributes="Bold" />
-                            <CollectionView ItemsSource="{Binding Exercises}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <VerticalStackLayout Padding="5">
-                                            <Label Text="{Binding Key}"
-                                                   FontAttributes="Bold"
-                                                   FontSize="16" />
-                                            <CollectionView ItemsSource="{Binding Value.Sets}">
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <HorizontalStackLayout Spacing="15">
-                                                            <Label Text="Reps:" />
-                                                            <Label Text="{Binding Reps}" />
-                                                            <Label Text="Weight:" />
-                                                            <Label Text="{Binding Weight}" />
-                                                        </HorizontalStackLayout>
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>
-                                        </VerticalStackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </VerticalStackLayout>
-                    </Frame>
+                    <Label Text="{Binding}"
+                           FontSize="18"
+                           Padding="12"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
         <Button Text="Add Workout"
                 Clicked="AddWorkout"/>
+
     </VerticalStackLayout>
 </ContentPage>

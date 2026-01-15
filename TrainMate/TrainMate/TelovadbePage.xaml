@@ -4,17 +4,43 @@
              x:Class="TrainMate.TelovadbePage"
              Title="TelovadbePage">
     <VerticalStackLayout>
-        <TableView Intent="Menu">
-            <TableRoot>
-                <TableSection x:Name="WorkoutSelection"  Title="Workouts">
-                    <TextCell Text="1. Introduction to TrainMate"
-                      Detail="Learn about TrainMate what it provides." />
-                </TableSection>
-            </TableRoot>
-        </TableView>
-
+        <CollectionView ItemsSource="{Binding Workouts}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,5">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="{Binding Name}"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                            <CollectionView ItemsSource="{Binding Exercises}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <VerticalStackLayout Padding="5">
+                                            <Label Text="{Binding Key}"
+                                                   FontAttributes="Bold"
+                                                   FontSize="16" />
+                                            <CollectionView ItemsSource="{Binding Value.Sets}">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <HorizontalStackLayout Spacing="15">
+                                                            <Label Text="Reps:" />
+                                                            <Label Text="{Binding Reps}" />
+                                                            <Label Text="Weight:" />
+                                                            <Label Text="{Binding Weight}" />
+                                                        </HorizontalStackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </VerticalStackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Button Text="Add Workout"
                 Clicked="AddWorkout"/>
-
     </VerticalStackLayout>
 </ContentPage>

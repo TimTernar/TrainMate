@@ -6,21 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrainMate
 {
-    class Workout
+    public class Workout
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string CreatedAt { get; set; }
 
-        public DateTime date { get; set; }
+        public Dictionary<string, WorkoutExercise> Exercises { get; set; }
 
-        public Dictionary<string, Exercise> exercises { get; set; }
-
-        public Workout() { }
-
-        public Workout(int id, DateTime date, Dictionary<string, Exercise> exercises)
-        {
-            Id = id;
-            this.date = date;
-            this.exercises = exercises;
-        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainMate
 {
-    class MuscleGroup
+    public class MuscleGroup
     {
         public int Id { get; set; }
 

@@ -30,6 +30,31 @@
                                                 <Label Text="kg" Grid.Column="2" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"/>
                                                 <Label Text="Reps" Grid.Column="3" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"/>
                                             </Grid>
+
+                                            <CollectionView ItemsSource="{Binding Value.Sets.Values}">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid ColumnDefinitions="40,*,70,70,40"
+                                                              Padding="4">
+
+                                                            <!--Set-->
+                                                            <Label Text="{Binding SetNumber}"
+                                                                   TextColor="Black"/>
+
+                                                            <Label Text="{Binding Reps}"
+                                                                   TextColor="Gray"
+                                                                   Grid.Column="1"/>
+
+                                                            <Label Text="{Binding Weight}"
+                                                                   TextColor="Black"
+                                                                   Grid.Column="2"
+                                                                    HorizontalTextAlignment="Center"/>
+
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                                            
                                         </VerticalStackLayout>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>

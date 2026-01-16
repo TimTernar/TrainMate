@@ -4,10 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:TrainMate"
-    Shell.FlyoutBehavior="Disabled"
-    Title="TrainMate">
+    Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
+    <!-- Tukaj lahko nastavita MainPage kot začetni page. Zaenkrat je začetna stran "HomePage" ker je delo lažje potem
+    <ShellContent
+        Route="main"
+        ContentTemplate="{DataTemplate pages:MainPage}" />
+    -->
+    <TabBar Route="tabs">
         <ShellContent
             Title="Home"
             Icon="homepage.png"

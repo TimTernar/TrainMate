@@ -14,7 +14,7 @@
     <TabBar Route="tabs">
         <ShellContent
             Title="Home"
-            Icon="homepage.png"
+            Icon="home2.png"
             Route="home"
             ContentTemplate="{DataTemplate pages:HomePage}" />
 
@@ -26,7 +26,7 @@
 
         <ShellContent
             Title="Profile"
-            Icon="profile.png"
+            Icon="profile2.png"
             Route="profile"
             ContentTemplate="{DataTemplate pages:ProfilePage}" />
     </TabBar>

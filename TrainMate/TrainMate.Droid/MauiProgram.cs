@@ -1,4 +1,5 @@
-﻿namespace TrainMate.Droid
+﻿
+namespace TrainMate.Droid
 {
     public static class MauiProgram
     {

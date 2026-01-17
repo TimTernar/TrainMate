@@ -10,4 +10,8 @@ Tim - Login, Registracija, Treningi
 Patricija - Recepti,
 Jovana - Profil, Nastavitve
 
+Link do Firebase baze
+https://console.firebase.google.com/project/mobilne-45354/database/mobilne-45354-default-rtdb/data
+
+
 (Če je kak problem me prosim kontaktirajte :) )

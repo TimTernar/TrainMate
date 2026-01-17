@@ -13,7 +13,7 @@ namespace TrainMate
         public string Place { get; set; }
         public string Quote { get; set; }
         public string Status { get; set; }
-        public string email { get; set; }
+        public string Email { get; set; }
 
     }
 }

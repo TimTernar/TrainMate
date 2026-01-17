@@ -6,26 +6,19 @@ namespace TrainMate;
 public partial class ProfilePage : ContentPage
 {
 
-    FirebaseClient firebaseClient = new FirebaseClient("https://mobilne-45354-default-rtdb.europe-west1.firebasedatabase.app/");
+    private readonly ProfilePageViewModel _vm = new();
 
     public ProfilePage()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+        BindingContext = _vm;
+    }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-
-        // directly fetch Users/1
-        var user = await firebaseClient
-            .Child("Users")
-            .Child("1")
-            .OnceSingleAsync<UserProfile>();
-
-        BindingContext = user;
+        await _vm.LoadAsync();
     }
-
 
     private async void OnSavedWorkoutsTapped(object sender, EventArgs e)
     {
@@ -37,5 +30,11 @@ public partial class ProfilePage : ContentPage
         await Navigation.PushAsync(new ReceptiPage());
     }
 
-
+    private async void OnRecipeTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is BindableObject bo && bo.BindingContext is Recipe recipe)
+        {
+            await DisplayAlert("Recipe", recipe.Name, "OK");
+        }
+    }
 }

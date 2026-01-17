@@ -17,6 +17,7 @@
                         SelectionMode="None"
                         Margin="0,8,0,0">
 
+            <!--nekaj-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border StrokeShape="RoundRectangle16"

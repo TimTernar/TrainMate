@@ -16,4 +16,9 @@ public partial class HomePage : ContentPage
     {
         await Navigation.PushAsync(new ReceptiPage());
     }
+
+    private async void OnHistoryTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ZgodovinaPage());
+    }
 }

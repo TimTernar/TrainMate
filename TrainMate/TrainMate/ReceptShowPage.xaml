@@ -2,11 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainMate.ReceptShowPage"
-             Title="ReceptShowPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="{Binding Name}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <Image Source="{Binding Image}"
+                   HeightRequest="220"
+                   Aspect="AspectFill" />
+
+            <Label Text="{Binding Name}"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding Type}"
+                   FontSize="14"
+                   TextColor="#6B6B6B" />
+
+            <Label Text="{Binding Description}"
+                   FontSize="14" />
+
+            <Label Text="Ingredients"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,12,0,0" />
+
+            <Label Text="{Binding Ingredients}"
+                   FontSize="14" />
+
+            <Label Text="Method"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,12,0,0" />
+
+            <Label Text="{Binding Method}"
+                   FontSize="14" />
+
+            <Grid ColumnDefinitions="*,*,*,*"
+                  Margin="0,12,0,0">
+
+                <Label Grid.Column="0" Text="{Binding Kcal, StringFormat='Kcal\n{0}'}"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Grid.Column="1" Text="{Binding Protein, StringFormat='Protein\n{0}g'}"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Grid.Column="2" Text="{Binding Carbs, StringFormat='Carbs\n{0}g'}"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Grid.Column="3" Text="{Binding Fat, StringFormat='Fat\n{0}g'}"
+                       HorizontalTextAlignment="Center" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

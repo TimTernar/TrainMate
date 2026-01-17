@@ -39,8 +39,12 @@ public partial class ReceptiPage : ContentPage
 
     private async void OnRecipeTapped(object sender, TappedEventArgs e)
     {
-        if (e.Parameter is Recipe recipe)
-            await DisplayAlert(recipe.Name, recipe.Description, "OK");
+
+        if (sender is BindableObject bo && bo.BindingContext is Recipe recipe)
+        {
+            await Navigation.PushAsync(new ReceptShowPage(recipe));
+        }
+
     }
 
 }

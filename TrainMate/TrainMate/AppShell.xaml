@@ -29,5 +29,11 @@
             Icon="profile2.png"
             Route="profile"
             ContentTemplate="{DataTemplate pages:ProfilePage}" />
+
+        <ShellContent
+            Title="Settings"
+            Icon="settings.png"
+            Route="settings"
+            ContentTemplate="{DataTemplate pages:NastavitvePage}" />
     </TabBar>
 </Shell>

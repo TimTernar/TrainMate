@@ -39,7 +39,7 @@
                     Aspect="AspectFill" />
 
                 <Label
-                    Text="Saved&#10;recepies"
+                    Text="Recepies"
                     Style="{StaticResource TextOverImage}" />
             </Grid>
         </Border>
@@ -58,10 +58,28 @@
                     Aspect="AspectFill" />
 
                 <Label
-                    Text="Saved&#10;history"
+                    Text="History"
                     Style="{StaticResource TextOverImage}" />
             </Grid>
         </Border>
+        <Border StrokeShape="RoundRectangle16"
+              HeightRequest="160"
+              Margin="10"
+              Padding="0">
 
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnStatsTapped" />
+            </Border.GestureRecognizers>
+
+            <Grid>
+                <Image
+                    Source="stats.jpg"
+                    Aspect="AspectFill" />
+
+                <Label
+                    Text="Statistics"
+                    Style="{StaticResource TextOverImage}" />
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainMate.StatsPage"
+             Title="Statistics"
+             BackgroundColor="{StaticResource RedBackground}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12" Spacing="14">
+
+            <!-- KPI cards -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+
+                <Border StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Workouts (week)" FontSize="12" TextColor="#6B6B6B"/>
+                        <Label Text="4" FontSize="22" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="1" StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Total workouts" FontSize="12" TextColor="#6B6B6B"/>
+                        <Label Text="38" FontSize="22" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="1" StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Minutes (week)" FontSize="12" TextColor="#6B6B6B"/>
+                        <Label Text="210" FontSize="22" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1" StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Streak" FontSize="12" TextColor="#6B6B6B"/>
+                        <Label Text="6 days" FontSize="22" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+
+            <!-- Weekly activity -->
+            <Border StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Weekly activity" FontSize="16" FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="8" VerticalOptions="End">
+                        <VerticalStackLayout Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="20" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="M" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="60" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="T" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="40" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="W" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="3" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="80" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="T" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="4" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="10" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="F" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="5" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="50" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="S" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="6" Spacing="6" VerticalOptions="End">
+                            <BoxView HeightRequest="30" WidthRequest="18" BackgroundColor="#D9D9D9" CornerRadius="6"/>
+                            <Label Text="S" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle16" BackgroundColor="White" Padding="12">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Top exercises (month)" FontSize="16" FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Bench press" />
+                        <Label Grid.Column="1" Text="8x" TextColor="#6B6B6B"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Squat" />
+                        <Label Grid.Column="1" Text="6x" TextColor="#6B6B6B"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Pull-ups" />
+                        <Label Grid.Column="1" Text="5x" TextColor="#6B6B6B"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            <!-- Muscle image -->
+            <Border StrokeShape="RoundRectangle16"
+        BackgroundColor="White"
+        Padding="12">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Muscle focus"
+               FontSize="16"
+               FontAttributes="Bold"/>
+
+                    <Border StrokeShape="RoundRectangle16"
+                StrokeThickness="0"
+                Padding="0"
+                HeightRequest="220">
+                        <Image Source="muscles.jpg"
+                   Aspect="AspectFill"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

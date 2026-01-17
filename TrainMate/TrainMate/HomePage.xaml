@@ -24,5 +24,25 @@
                 Style="{StaticResource TextOverImage}" />
             </Grid>
         </Border>
+        <Border StrokeShape="RoundRectangle16"
+              HeightRequest="160"
+              Margin="10"
+              Padding="0">
+
+            <!-- Omogoča da lahko kliknemo na sliko -->
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRecepiesTapped" />
+            </Border.GestureRecognizers>
+
+            <Grid>
+                <Image
+                    Source="recepies.jpg"
+                    Aspect="AspectFill" />
+
+                <Label
+                    Text="Saved&#10;recepies"
+                    Style="{StaticResource TextOverImage}" />
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

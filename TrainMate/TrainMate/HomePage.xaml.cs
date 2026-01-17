@@ -12,4 +12,8 @@ public partial class HomePage : ContentPage
         await Navigation.PushAsync(new TelovadbePage());
     }
 
+    private async void OnRecepiesTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ReceptiPage());
+    }
 }

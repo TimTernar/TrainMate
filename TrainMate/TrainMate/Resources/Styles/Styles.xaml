@@ -3,6 +3,7 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
@@ -460,8 +461,129 @@
         <Setter Property="TextColor" Value="White"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
-    
-    
+
+
+    <Style x:Key="WorkoutCardBorder" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardRed}" />
+        <Setter Property="Stroke" Value="{StaticResource White}" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0,10,0,10" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="14" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Opacity="0.12" Radius="8" Offset="0,3" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Header area inside the card -->
+    <Style x:Key="WorkoutHeaderGrid" TargetType="Grid">
+        <Setter Property="Padding" Value="12,12" />
+        <Setter Property="BackgroundColor" Value="#14FFFFFF" />
+        <!-- subtle white overlay -->
+    </Style>
+
+    <!-- Exercise title -->
+    <Style x:Key="ExerciseTitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!-- Divider line -->
+    <Style x:Key="WorkoutDivider" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="{StaticResource DividerWhite}" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <!-- Table header row -->
+    <Style x:Key="WorkoutTableHeaderGrid" TargetType="Grid">
+        <Setter Property="Padding" Value="8,8" />
+    </Style>
+
+    <Style x:Key="WorkoutHeaderLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!-- Set row grid -->
+    <Style x:Key="WorkoutSetRowGrid" TargetType="Grid">
+        <Setter Property="Padding" Value="10,10" />
+    </Style>
+
+    <!-- Normal cell text -->
+    <Style x:Key="WorkoutCellLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!-- Previous column text -->
+    <Style x:Key="WorkoutPrevLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource PrevDark}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!-- Pill Entry (Kg / Reps) -->
+    <Style x:Key="PillEntry" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="HeightRequest" Value="28" />
+        <Setter Property="WidthRequest" Value="58" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <!-- Pill border around Entry -->
+    <Style x:Key="PillBorder" TargetType="Border">
+        <Setter Property="Stroke" Value="{StaticResource White}" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HeightRequest" Value="28" />
+        <Setter Property="WidthRequest" Value="58" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="14" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Purple check box -->
+    <Style x:Key="CheckBoxBorder" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource CheckPurple}" />
+        <Setter Property="HeightRequest" Value="22" />
+        <Setter Property="WidthRequest" Value="22" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CheckMarkLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+
 
     <Style TargetType="TitleBar">
         <Setter Property="MinimumHeightRequest" Value="32"/>

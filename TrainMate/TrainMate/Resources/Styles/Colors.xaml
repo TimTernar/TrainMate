@@ -37,6 +37,16 @@
     <Color x:Key="Purple">#8B7CFF</Color>
     <Color x:Key="GrayText">#9A9A9A</Color>
 
+    <Color x:Key="PagePink">#F6A7A7</Color>
+    <Color x:Key="CardRed">#FF6E6E</Color>
+    <Color x:Key="TextDark">#1B1B1B</Color>
+    <Color x:Key="PrevDark">#C0000000</Color>
+    <!-- 75% črno -->
+    <Color x:Key="DividerWhite">#B3FFFFFF</Color>
+    <!-- 70% belo -->
+    <Color x:Key="CheckPurple">#4B4AA0</Color>
+
+
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

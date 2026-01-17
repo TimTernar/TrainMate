@@ -2,69 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainMate.ViewTelovadba"
-             Title="ViewTelovadba">
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Workouts}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border Margin="0,8"
-                    Padding="12"
-                    BackgroundColor="#1E1E1E"
-                    StrokeShape="RoundRectangle 14">
-                        <VerticalStackLayout Spacing="10">
-                            <!--Prikaz imena telovadbe-->
-                            <Label Text="{Binding Name}" 
-                                   TextColor="White"
-                                   />
-                            <CollectionView ItemsSource="{Binding Exercises}" >
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <!--Prikaz posebnej vaj-->
-                                        <VerticalStackLayout Spacing="6">
-                                            <Label Text="{Binding Key}"
-                                                   Style="{StaticResource ExerciseName}"/>
+             Title="{Binding PageTitle}"
+             BackgroundColor="{StaticResource RedBackground}">
 
-                                            <!--|Set |  Exercise   | kg |Rep | ✓  |-->
-                                            <Grid ColumnDefinitions="40,*,70,70,40">
-                                                <Label Text="Set" TextColor="CornflowerBlue"/>
-                                                <Label Text="Previous" Grid.Column="1" TextColor="CornflowerBlue"/>
-                                                <Label Text="kg" Grid.Column="2" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"/>
-                                                <Label Text="Reps" Grid.Column="3" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"/>
+    <ScrollView>
+        <VerticalStackLayout Padding="14" Spacing="16">
+
+            <CollectionView ItemsSource="{Binding ExerciseRows}"
+                            SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Border Style="{StaticResource WorkoutCardBorder}">
+                            <VerticalStackLayout Spacing="0">
+
+                                <Grid Style="{StaticResource WorkoutHeaderGrid}"
+                                      ColumnDefinitions="*,Auto">
+
+                                    <Label Text="{Binding DisplayName}"
+                                           Style="{StaticResource ExerciseTitleLabel}" />
+
+                                    <Switch Grid.Column="1"
+                                            IsToggled="True"
+                                            Scale="0.85"
+                                            IsEnabled="False" />
+                                </Grid>
+
+                                <BoxView Style="{StaticResource WorkoutDivider}" />
+
+                                <Grid Style="{StaticResource WorkoutTableHeaderGrid}"
+                                      ColumnDefinitions="55,*"
+                                      ColumnSpacing="10">
+
+                                    <Label Text="Set" Style="{StaticResource WorkoutHeaderLabel}" />
+                                    <Label Grid.Column="1" Text="Previous" Style="{StaticResource WorkoutHeaderLabel}" />
+                                </Grid>
+
+                                <CollectionView ItemsSource="{Binding Sets}"
+                                                SelectionMode="None">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid Style="{StaticResource WorkoutSetRowGrid}"
+                                                  ColumnDefinitions="55,*"
+                                                  ColumnSpacing="10">
+
+                                                <Label Text="•"
+                                                       Style="{StaticResource WorkoutCellLabel}" />
+
+                                                <Label Grid.Column="1"
+                                                       Style="{StaticResource WorkoutPrevLabel}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Weight}" />
+                                                            <Span Text=" kg x " />
+                                                            <Span Text="{Binding Reps}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
                                             </Grid>
 
-                                            <CollectionView ItemsSource="{Binding Value.Sets}">
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid ColumnDefinitions="40,*,70,70,40"
-                                                              Padding="4">
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
 
-                                                            <!--Set-->
-                                                            <Label Text="{Binding SetNumber}"
-                                                                   TextColor="Black"/>
+                            </VerticalStackLayout>
+                        </Border>
 
-                                                            <Label Text="{Binding Reps}"
-                                                                   TextColor="Gray"
-                                                                   Grid.Column="1"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
 
-                                                            <Label Text="{Binding Weight}"
-                                                                   TextColor="Black"
-                                                                   Grid.Column="2"
-                                                                    HorizontalTextAlignment="Center"/>
+            </CollectionView>
 
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>
-                                                            
-                                        </VerticalStackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </VerticalStackLayout>
-                    </Border>
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

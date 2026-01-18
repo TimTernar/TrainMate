@@ -45,6 +45,8 @@
     <Color x:Key="DividerWhite">#B3FFFFFF</Color>
     <!-- 70% belo -->
     <Color x:Key="CheckPurple">#4B4AA0</Color>
+    
+
 
 
 

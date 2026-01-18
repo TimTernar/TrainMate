@@ -1,0 +1,176 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainMate.CreateTelovadbaPage"
+             BackgroundColor="{StaticResource RedBackground}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Border Grid.Row="0"
+                Style="{StaticResource BorderWorkoutName}">
+
+            <VerticalStackLayout Spacing="10">
+
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Workout name"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource White}" />
+                    <Entry Text="{Binding WorkoutName}"
+                           Placeholder="e.g. Push day A"
+                           TextColor="{StaticResource White}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Description"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource White}" />
+                    <Editor Text="{Binding WorkoutDescription}"
+                            Placeholder="Optional notes..."
+                            AutoSize="TextChanges"
+                            TextColor="{StaticResource White}"
+                            HeightRequest="80" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Exercises list -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Exercises}"
+                        SelectionMode="None"
+                        Margin="14,12,14,0">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Delete workout"
+                                           BackgroundColor="Red"
+                                           Command="{Binding BindingContext.DeleteWorkoutCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Border Style="{StaticResource WorkoutCardBorder}">
+
+                            <VerticalStackLayout Spacing="0">
+
+                                <Grid Style="{StaticResource WorkoutHeaderGrid}"
+                                      ColumnDefinitions="*,Auto,Auto">
+
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource ExerciseTitleLabel}" />
+
+                                    <Button Grid.Column="1"
+                                            Text="🗑"
+                                            Style="{StaticResource DeleteWorkout}"
+                                            Margin="0"
+                                            Padding="6,0"
+                                            Command="{Binding BindingContext.DeleteWorkoutCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Grid.Column="2"
+                                            Text="⋯"
+                                            BackgroundColor="{StaticResource White}"
+                                            TextColor="{StaticResource TextDark}"
+                                            CornerRadius="14"
+                                            HeightRequest="28"
+                                            WidthRequest="42"
+                                            Padding="0"
+                                            Margin="10,0,0,0"/>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource WorkoutDivider}" />
+
+                                <Grid Style="{StaticResource WorkoutTableHeaderGrid}"
+                                      ColumnDefinitions="40,*,70,70,40">
+
+                                    <Label Text="Set" Style="{StaticResource WorkoutHeaderLabel}" />
+                                    <Label Grid.Column="1" Text="Previous" Style="{StaticResource WorkoutHeaderLabel}" />
+                                    <Label Grid.Column="2" Text="Kg" Style="{StaticResource WorkoutHeaderLabel}" HorizontalTextAlignment="Center" />
+                                    <Label Grid.Column="3" Text="Reps" Style="{StaticResource WorkoutHeaderLabel}" HorizontalTextAlignment="Center" />
+                                    <Label Grid.Column="4" Text="" Style="{StaticResource WorkoutHeaderLabel}" />
+                                </Grid>
+
+                                <CollectionView ItemsSource="{Binding Sets}"
+                                                SelectionMode="None">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <SwipeView>
+                                                <SwipeView.RightItems>
+                                                    <SwipeItems Mode="Execute">
+                                                        <SwipeItem Text="Delete set"
+                                                                   BackgroundColor="Red"
+                                                                   Command="{Binding BindingContext.DeleteSetCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                                   CommandParameter="{Binding .}" />
+                                                    </SwipeItems>
+                                                </SwipeView.RightItems>
+
+                                                <Grid Style="{StaticResource WorkoutSetRowGrid}"
+                                                      ColumnDefinitions="40,*,70,70,40">
+
+                                                    <Label Text="{Binding SetNumber}"
+                                                           Style="{StaticResource WorkoutCellLabel}" />
+
+                                                    <Label Grid.Column="1"
+                                                           Text="{Binding Previous}"
+                                                           Style="{StaticResource WorkoutPrevLabel}" />
+
+                                                    <Border Grid.Column="2" Style="{StaticResource PillBorder}">
+                                                        <Entry Style="{StaticResource PillEntry}"
+                                                               Text="{Binding Kg}" />
+                                                    </Border>
+
+                                                    <Border Grid.Column="3" Style="{StaticResource PillBorder}">
+                                                        <Entry Style="{StaticResource PillEntry}"
+                                                               Text="{Binding Reps}" />
+                                                    </Border>
+
+                                                    <Border Grid.Column="4" Style="{StaticResource CheckBoxBorder}">
+                                                        <Label Text="✓"
+                                                               Style="{StaticResource CheckMarkLabel}"
+                                                               IsVisible="{Binding IsDone}" />
+                                                        <Border.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding ToggleDoneCommand}" />
+                                                        </Border.GestureRecognizers>
+                                                    </Border>
+
+                                                </Grid>
+                                            </SwipeView>
+
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                                <HorizontalStackLayout Padding="10,8" Spacing="10">
+                                    <Button Text="+ Add set"
+                                            BackgroundColor="{StaticResource White}"
+                                            TextColor="{StaticResource TextDark}"
+                                            CornerRadius="14"
+                                            HeightRequest="34"
+                                            Padding="14,0"
+                                            Command="{Binding AddSetCommand}" />
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </SwipeView>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom button -->
+        <Button Grid.Row="2"
+                Text="Add Exercise"
+                BackgroundColor="{StaticResource BgDark}"
+                TextColor="{StaticResource White}"
+                CornerRadius="10"
+                HeightRequest="54"
+                Margin="14,10"
+                Command="{Binding AddExerciseCommand}" />
+    </Grid>
+
+</ContentPage>

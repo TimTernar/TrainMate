@@ -30,10 +30,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CreateTelovadbaPage.xaml.cs">
+	    <DependentUpon>CreateTelovadbaPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="AnketaPage1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CreateTelovadba.xaml">
+	  <MauiXaml Update="CreateTelovadbaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="HomePage.xaml">

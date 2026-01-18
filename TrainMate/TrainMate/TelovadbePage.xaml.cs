@@ -74,6 +74,6 @@ public partial class TelovadbePage : ContentPage
 
     private async void AddWorkout(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CreateTelovadba());
+        await Navigation.PushAsync(new CreateTelovadbaPage());
     }
 }

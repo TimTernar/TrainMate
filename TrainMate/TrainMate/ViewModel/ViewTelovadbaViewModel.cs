@@ -24,10 +24,10 @@ public class ViewTelovadbaViewModel : INotifyPropertyChanged
 
         foreach (var kvp in workout.Exercises)
         {
-            var key = kvp.Key;              // e.g. "bench_press"
+            var key = kvp.Key;              // "bench_press"
             var we = kvp.Value;             // WorkoutExercise
 
-            // Firebase often returns Sets like [null, {...}, {...}] -> remove nulls
+            // Odstrani nulls
             var sets = (we?.Sets ?? new List<ExerciseSet>())
                 .Where(s => s != null)
                 .ToList();

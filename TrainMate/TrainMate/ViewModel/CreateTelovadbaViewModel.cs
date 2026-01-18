@@ -17,7 +17,6 @@ namespace TrainMate.ViewModel
         {
             if (selected == null) return;
 
-            // Prevent duplicates if you want:
             if (Exercises.Any(x => string.Equals(x.Key, selected.Key, StringComparison.OrdinalIgnoreCase)))
                 return;
 
@@ -27,14 +26,14 @@ namespace TrainMate.ViewModel
                 Key = selected.Key
             };
 
-            // add an initial set (optional)
+            // dodaj začetni set
             ex.AddSet("0 kg x 0");
 
             Exercises.Add(ex);
         }
 
 
-        // NEW: workout header fields
+        // workout header polja
         private string _workoutName = "";
         public string WorkoutName
         {
@@ -114,7 +113,6 @@ namespace TrainMate.ViewModel
                     return;
                 }
 
-                // Later: convert Exercises -> Workout model and post to Firebase
                 await App.Current.MainPage.DisplayAlert("Saved (demo)",
                     $"Workout: {WorkoutName}\nExercises: {Exercises.Count}",
                     "OK");

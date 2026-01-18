@@ -22,13 +22,13 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
     private DateTime _currentMonth = new(DateTime.Today.Year, DateTime.Today.Month, 1);
     public string MonthTitle => _currentMonth.ToString("MMM yyyy", CultureInfo.InvariantCulture);
 
-    // Workouts indexed by date
+    // Telovadbe indeksirane po datumu
     private readonly Dictionary<DateTime, List<Workout>> _workoutsByDate = new();
 
-    // Exercise name lookup (bench_press => "Bench Press")
+    // pogled telovadb
     private readonly Dictionary<string, string> _exerciseNameByKey = new();
 
-    // Selected day
+    // Izbrani dan
     private DayCell? _selectedDay;
     public DayCell? SelectedDay
     {
@@ -37,7 +37,7 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
         {
             if (_selectedDay == value) return;
 
-            // Unselect previous
+            // Unselect prejšnjo
             if (_selectedDay != null) _selectedDay.IsSelected = false;
 
             _selectedDay = value;
@@ -50,7 +50,7 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
         }
     }
 
-    // Workout card (below calendar)
+    // Workout card (kaže pretklo aktivnost)
     private string _selectedWorkoutTitle = "";
     public string SelectedWorkoutTitle
     {
@@ -86,7 +86,7 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
         await LoadWorkoutsAsync();
         BuildMonth();
 
-        // optional: auto-select today
+        //samodejno izbere dannašnji datum
         var todayCell = Days.FirstOrDefault(d => d.Date.Date == DateTime.Today.Date);
         if (todayCell != null) SelectedDay = todayCell;
     }
@@ -95,8 +95,8 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
     {
         _exerciseNameByKey.Clear();
 
-        // /Exercises is an object (keys: bench_press, ...)
-        // Use a small DTO so we don't fight your Exercise model shape.
+        // /Exercises je objekz (keys: bench_press, ...)
+        // Upoabi sem DTO model da se  nebom več pizdo z tem zabitim modelom
         var nodes = await _firebase.Child("Exercises").OnceAsync<ExerciseDb>();
 
         foreach (var n in nodes)
@@ -110,14 +110,13 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
     {
         _workoutsByDate.Clear();
 
-        // /Workouts is an ARRAY in your Firebase
         var list = await _firebase.Child("Workouts").OnceSingleAsync<List<Workout>>();
 
         foreach (var w in (list ?? new List<Workout>()))
         {
             if (w == null) continue;
 
-            // CreatedAt is "yyyy-MM-dd" in your JSON
+            // CreatedAt "yyyy-MM-dd"
             if (!DateTime.TryParse(w.CreatedAt, out var dt))
                 continue;
 
@@ -139,10 +138,11 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
 
         var firstOfMonth = new DateTime(_currentMonth.Year, _currentMonth.Month, 1);
 
-        // Sunday-first to match Su–Sa headers
+        
         int sundayIndex = (int)firstOfMonth.DayOfWeek;
         var start = firstOfMonth.AddDays(-sundayIndex);
 
+        //prikaz 42 celic (6*7)
         for (int i = 0; i < 42; i++)
         {
             var date = start.AddDays(i).Date;
@@ -159,7 +159,7 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
 
         OnPropertyChanged(nameof(MonthTitle));
 
-        // Clear selection/workout card when changing month
+        // Clear 
         SelectedWorkoutLines.Clear();
         OnPropertyChanged(nameof(HasSelectedWorkout));
         SelectedDay = null;
@@ -183,7 +183,6 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
             return;
         }
 
-        // "load one of the 2 saved workouts" -> pick the first workout of that day
         var workout = workouts[0];
 
         // Title like: "Sep. 9, 2025 “Leg day”"
@@ -191,7 +190,6 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
         var wname = string.IsNullOrWhiteSpace(workout.Name) ? "Workout" : workout.Name;
         SelectedWorkoutTitle = $"{dateTitle} “{wname}”";
 
-        // Convert workout.Exercises to display lines
         if (workout.Exercises != null)
         {
             foreach (var kvp in workout.Exercises)
@@ -228,7 +226,6 @@ public class ZgodovinaViewModel : INotifyPropertyChanged
         => string.Join(" ", key.Split('_', StringSplitOptions.RemoveEmptyEntries)
             .Select(w => char.ToUpper(w[0]) + w.Substring(1)));
 
-    // DTO: only what we need from /Exercises
     private class ExerciseDb
     {
         public int Id { get; set; }

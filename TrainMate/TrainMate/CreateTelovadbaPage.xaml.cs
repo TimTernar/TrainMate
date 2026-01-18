@@ -9,4 +9,9 @@ public partial class CreateTelovadbaPage : ContentPage
         InitializeComponent();
         BindingContext = new CreateTelovadbaViewModel();
     }
+
+    private async void OnSavedWorkoutsTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new DodajTelovadboPage());
+    }
 }

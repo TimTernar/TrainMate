@@ -38,7 +38,6 @@ namespace TrainMate.ViewModel
             }
         }
 
-        public ICommand AddExerciseCommand { get; }
         public ICommand DeleteWorkoutCommand { get; }
         public ICommand DeleteSetCommand { get; }
 
@@ -65,10 +64,6 @@ namespace TrainMate.ViewModel
             WorkoutName = "My Workout";
             WorkoutDescription = "Notes...";
 
-            AddExerciseCommand = new Command(() =>
-            {
-                Exercises.Add(new ExerciseVM(this) { Name = "New Exercise" });
-            });
 
             DeleteWorkoutCommand = new Command<ExerciseVM>(ex =>
             {

@@ -13,6 +13,27 @@ namespace TrainMate.ViewModel
 
         public ObservableCollection<ExerciseVM> Exercises { get; } = new();
 
+        public void AddExerciseFromSelection(ExerciseItem selected)
+        {
+            if (selected == null) return;
+
+            // Prevent duplicates if you want:
+            if (Exercises.Any(x => string.Equals(x.Key, selected.Key, StringComparison.OrdinalIgnoreCase)))
+                return;
+
+            var ex = new ExerciseVM(this)
+            {
+                Name = selected.Name,
+                Key = selected.Key
+            };
+
+            // add an initial set (optional)
+            ex.AddSet("0 kg x 0");
+
+            Exercises.Add(ex);
+        }
+
+
         // NEW: workout header fields
         private string _workoutName = "";
         public string WorkoutName
@@ -77,6 +98,7 @@ namespace TrainMate.ViewModel
                 set.Parent.Sets.Remove(set);
                 set.Parent.RenumberSets();
             });
+
 
             SaveWorkoutCommand = new Command(async () =>
             {

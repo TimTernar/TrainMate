@@ -11,6 +11,8 @@ namespace TrainMate.ViewModel
 {
     internal class ExerciseVM
     {
+        public string Key { get; set; }
+
         private readonly CreateTelovadbaViewModel _root;
 
         public string Name { get; set; } = "";

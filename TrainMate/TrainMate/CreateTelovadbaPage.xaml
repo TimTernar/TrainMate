@@ -1,7 +1,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainMate.CreateTelovadbaPage"
-             BackgroundColor="{StaticResource RedBackground}">
+             BackgroundColor="{StaticResource RedBackground}"
+             >
+    <!--za dodajanje telovadbe ko dodaš vse potrebne telovadbe-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Done"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Done_Clicked" />
+    </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="Auto,*,Auto">
 
@@ -38,10 +46,12 @@
                         ItemsSource="{Binding Exercises}"
                         SelectionMode="None"
                         Margin="14,12,14,0">
+            
+            
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-
+                   
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Execute">
@@ -163,14 +173,14 @@
         </CollectionView>
 
         <!-- Bottom button -->
-        <Button Grid.Row="2"
-                Text="Add Exercise"
-                BackgroundColor="{StaticResource BgDark}"
-                TextColor="{StaticResource White}"
-                CornerRadius="10"
-                HeightRequest="54"
-                Margin="14,10"
-                Command="{Binding AddExerciseCommand}" />
+        <Button Grid.Row="3"
+            Text="Add Exercise"
+            BackgroundColor="{StaticResource BgDark}"
+            TextColor="{StaticResource White}"
+            CornerRadius="10"
+            HeightRequest="54"
+            Margin="14,10"
+            Clicked="AddExercise_Clicked" />
     </Grid>
 
 </ContentPage>

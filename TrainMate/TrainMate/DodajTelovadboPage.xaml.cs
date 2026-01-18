@@ -1,26 +1,27 @@
 using Firebase.Database;
-using TrainMate.ViewModel;
 using Firebase.Database.Query;
+using TrainMate.ViewModel;
 
 namespace TrainMate;
 
 public partial class DodajTelovadboPage : ContentPage
 {
-	public DodajTelovadboPage()
-	{
-		InitializeComponent();
-	}
-
     private readonly FirebaseClient firebaseClient =
-    new FirebaseClient("https://mobilne-45354-default-rtdb.europe-west1.firebasedatabase.app/");
+        new FirebaseClient("https://mobilne-45354-default-rtdb.europe-west1.firebasedatabase.app/");
 
     private List<ExerciseItem> _items = new();
+    private readonly TaskCompletionSource<ExerciseItem?> _tcs;
+
+    public DodajTelovadboPage(TaskCompletionSource<ExerciseItem?> tcs)
+    {
+        InitializeComponent();
+        _tcs = tcs;
+    }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        // This works because /Exercises is an object with children keys
         var nodes = await firebaseClient
             .Child("Exercises")
             .OnceAsync<Exercise>();
@@ -46,9 +47,14 @@ public partial class DodajTelovadboPage : ContentPage
 
         ExerciseList.SelectedItem = null;
 
-        await DisplayAlert("Selected", $"{selected.Name} ({selected.Key})", "OK");
+        _tcs.TrySetResult(selected);
 
         await Navigation.PopAsync();
     }
 
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        _tcs.TrySetResult(null);
+    }
 }

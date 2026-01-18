@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainMate.ViewModel
 {
-    class ExerciseItem
+    public class ExerciseItem
     {
         public string Key { get; set; } = "";  // bench_press
         public Exercise Exercise { get; set; } = new();
